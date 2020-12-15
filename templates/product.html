@@ -3,60 +3,35 @@
 {% block content %}
 {% load static %}
 
-<div class="container">
-        <div class="row row-2">
-            <h2>All Products</h2>
-            <select>
-                <option>Default Sorting</option>
-                <option>Sort by price</option>
-                <option>Sort by popularity</option>
-                <option>Sort by rating</option>
-                <option>Sort by sales</option>
-            </select>
-        </div>
 
-    <!-- <div class='row'>
-        {%for product in products %}
-        <div class='col-4'>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Pariatur,
-             perferendis incidunt! Nemo facilis explicabo natus? Facilis beatae unde,
-              inventore voluptates vel quidem, odit aspernatur quia reiciendis mollitia
-               eos dolorem eum!
-        </div>
-                   {% endfor %}
+<div class='product_sec1'>
+    <h2>All Products</h2>
+</div>
 
-    </div> -->
+</div>
 
-        <div class="row">
-            {% for product in products %}
-            <div class="col-4">
-                <img src="{{product.image.url}}">
-                <h4>{{product.name}}</h4>
-                <button data-product="{{product.id}}" data-action="add" class='update-cart btn btn-primary'>Add to Cart</button>
-                <a class="btn btn-primary" href="#">View</a>
-                <div class="rating">
-                    <i class="fa fa-star"></i>
-                    <i class="fa fa-star"></i>
-                    <i class="fa fa-star"></i>
-                    <i class="fa fa-star"></i>
-                    <i class="fa fa-star-o"></i>
+ <div class='container'>
+            <div class='sec3'>
+                
+                <div class='row'>  
+                    {% for product in products %}         
+                    <div class='col-md-4'>
+                        <div class='sec2_div'>
+                                    <img class='sec3_img' src="{{product.image.url}}">
+                                    <div class='product_sec3'>
+                                        <button data-product="{{product.id}}" data-action="add" class='update-cart product_sec3_btn btn-primary'>Add to Cart</button>
+                                    <a class="" href="#"><button class='product_sec3_btn btn-primary'>view</button></a>
+                                    </div>
+                                    <h3>${{product.price}}</h3>      
+                        </div>
+                    </div> 
+                    {%endfor%} 
                 </div>
-              <h2> {{product.price}}</h2>
+               
             </div>
-            {%endfor%}
-
-
+        
         </div>
-  
 
-        <div class="page-btn">
-            <span>1</span>
-            <span>2</span>
-            <span>3</span>
-            <span>4</span>
-            <span>&#8594;</span>
-        </div>
-    </div>
 
 <!-- footer -->
 <div class="footer">

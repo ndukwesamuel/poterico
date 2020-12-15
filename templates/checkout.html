@@ -1,7 +1,9 @@
 {% extends 'main.html' %}
 {% load static %}
 {% block content %}
-     <div class="row">
+
+<div class='container'>
+	<div class="row">
 		<div class="col-lg-6">
 			<div class="box-element" id="form-wrapper">
 				<form id="form">
@@ -51,13 +53,13 @@
 
 		<div class="col-lg-6">
 			<div class="box-element">
-				<a  class="btn btn-outline-dark" href="{% url 'cart' %}">&#x2190; Back to Cart</a>
+				<a href="{% url 'cart' %}"><button class=' product_sec3_btn'>&#x2190;Back to Cart</button></a>
 				<hr>
 				<h3>Order Summary</h3>
 				<hr>
 				{% for item in items %}
 				<div class="cart-row">
-					<div style="flex:2"><img class="row-image" src="{{item.product.imageURL}}"></div>
+					<div style="flex:2"><img class="row-image" src="{{item.product.image.url}}"></div>
 					<div style="flex:2"><p>{{item.product.name}}</p></div>
 					<div style="flex:1"><p>${{item.product.price|floatformat:2}}</p></div>
 					<div style="flex:1"><p>x{{item.quantity}}</p></div>
@@ -66,8 +68,14 @@
 				<h5>Items:   {{order.get_cart_items}}</h5>
 				<h5>Total:   ${{order.get_cart_total|floatformat:2}}</h5>
 			</div>
+			
 		</div>
+
 	</div>
+
+</div>
+
+
 
     <script src="https://www.paypal.com/sdk/js?client-id=sb&currency=USD&disable-funding=credit"></script>
 	<script>
@@ -183,7 +191,7 @@
 	    	.then((data) => {
 				  console.log('Success:', data);
 				  alert('Transaction completed');  
-				  window.location.href = "{% url 'store' %}"
+				  window.location.href = "{% url 'home' %}"
 
 				})
 	}
