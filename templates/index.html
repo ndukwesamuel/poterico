@@ -1,0 +1,191 @@
+{% extends 'main.html' %}
+
+{% block content %}
+{% load static %}
+<body>
+  
+<div class='land'>
+    <div class='container'>
+        <div class="row">
+
+            <div class='col-md-6'>  
+                <h1 class='land_h1'> GET THE <br>BEST AT<br> LOW <br>COST </h1>
+                <a href="{% url 'product' %}" class="btn btn-primary "> Explore Now &#8594;</a>
+            </div>
+            <div class='col-md-6'>
+                <img class="land_img" src="{% static 'images/pot1.jpg' %}" alt="">
+
+            </div>
+        </div>
+    </div>
+</div>
+ 
+<div class='container'>
+    <div class='sec_1'>
+        <h2 class="#">Featured Products</h2>
+        <div class='row'>
+            {% for product in products %}
+            <div class='col-md-4 '>
+                <a href="{% url 'product' %}"><img class='fea_img' src="{{product.image.url}}"></a>
+                <div>
+                    Lorem, ipsum dolor sit amet consectetur adipisicing elit. 
+                </div>
+            </div>
+            {% endfor  %}
+        </div>
+    </div>
+</div>
+
+
+
+<!--- offer ---->
+<!-- <div class="offer">
+    <div class="small-container">
+        <div class="row">
+            <div class="col-2">
+                <img src="{%static 'images/images/exclusive.png'    %}" class="offer-img">
+            </div>
+            <div class="col-2">
+                <p>Exclusively Available on RedStore</p>
+                <h1>Smart Band 4</h1>
+                <small>The Mi Smart Band $ features a 39.9% larger
+                (than Mi Band 3) AMOLED colour full-touch display width
+                adjustable brightness, so everythin is clear as can 
+                be</small>
+                <a href="" class="btn">Buy Now &#8594;</a>
+            </div>
+        </div>
+    </div>
+</div> -->
+<!-- testimonial-->
+<div class="testimonial">
+    <div class="small-container">
+        <div class="row">
+            <div class="col-3">
+                <i class="fa fa-quote-left"> </i>
+                <p>Lorem ipsum is simply dummy text of the printing
+                    and typesetting industry. Lorem Ipsum has been the
+                    industry's  standard dummy text ever</p>
+                    <div class="rating">
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star-half-o"></i>
+                    </div>
+                    <img src="{%static 'images/images/user-1.png'    %}">
+                    <h3>Sean Parker</h3>
+            </div>
+            <div class="col-3">
+                <i class="fa fa-quote-left"> </i>
+                <p>Lorem ipsum is simply dummy text of the printing
+                    and typesetting industry. Lorem Ipsum has been the
+                    industry's  standard dummy text ever</p>
+                    <div class="rating">
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star-half-o"></i>
+                    </div>
+                    <img src="{%static 'images/images/user-2.png'    %}">
+                    <h3>Mike Smith</h3>
+            </div>
+            <div class="col-3">
+                <i class="fa fa-quote-left"> </i>
+                <p>Lorem ipsum is simply dummy text of the printing
+                    and typesetting industry. Lorem Ipsum has been the
+                    industry's  standard dummy text ever</p>
+                    <div class="rating">
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star-half-o"></i>
+                    </div>
+                    <img src="{%static 'images/images/user-3.png'    %}">
+                    <h3>Mabel Joe</h3>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- brands -->
+<!-- <div class="brands">
+    <div class="small-container">
+        <div class="row">
+            <div class="col-5">
+                <img src="{% static 'images/images/logo-godrej.png'    %}" alt="">
+            </div>
+            <div class="col-5">
+                <img src="{% static 'images/images/logo-oppo.png' %}" alt="">
+            </div>
+            <div class="col-5">
+                <img src="{%static 'images/images/logo-coca-cola.png'    %}" alt="">
+            </div>
+            <div class="col-5">
+                <img src="images/logo-paypal.png" alt="">
+            </div>
+            <div class="col-5">
+                <img src="images/logo-philips.png" alt="">
+            </div>
+        </div>
+    </div>
+</div> -->
+<!-- footer -->
+    <div class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="footer-col-1">
+                    <h3> Download Our App </h3>
+                    <p>Download App for Android and ios mobile phone.</p>
+                    <div class="app-logo">
+                        <img src="{% static 'images/images/play-store.png'  %}" alt="">
+                        <img src="{% static 'images/images/app-store.png'    %}">
+                    </div>
+                </div>
+                <div class="footer-col-2">
+                    <img src="{%static 'images/images/logo-white.png'    %}">
+                    <p>Our Purpose is To Sustainably Make the Pleasure and
+                        Benefit of Sports Accessible to the Many.</p>
+                </div>
+                <div class="footer-col-3">
+                    <h3>Useful Links</h3>
+                    <ul>
+                        <li>Coupons</li>
+                        <li>Blog Post</li>
+                        <li>Return Policy</li>
+                        <li>Join Affiliate</li>
+                    </ul>
+                </div>
+                <div class="footer-col-3">
+                    <h3>Follow us</h3>
+                    <ul>
+                        <li>Facebook</li>
+                        <li>Twitter</li>
+                        <li>Istargram</li>
+                        <li>Youtube</li>
+                    </ul>
+                </div>
+            </div>
+            <hr>
+            <p class="copyright">Copyright 2020 - Kitovu </p>
+        </div>
+    </div>
+    <script>
+        var MenuItems = document.getElementById("MenuItems");
+        MenuItems.style.maxHeight = "0px";
+        function menutoggle(){
+            if (MenuItems.style.maxHeight == "0px")
+                {
+                    MenuItems.style.maxHeight = "200px";
+                }
+            else 
+                {
+                    MenuItems.style.maxHeight = "0px";
+                }
+        }
+    </script>
+</body>
+</html>
+
+{% endblock content %}
