@@ -45,6 +45,26 @@ nav ul li{
     margin-left: 20%;
 }
 
+.foot_img{
+    width:100%;
+    margin-bottom: 20px;
+}
+
+.foot_img2{
+    width:70%;
+    margin-left: 25px;
+}
+
+.fot_col{
+    color: white;
+}
+
+.fooo{
+    background-color: #43184D;
+    padding-top: 40px;
+    color:white;
+}
+
 .sec_1_h2{
     text-align:center;
     margin-top: 40px;
@@ -93,6 +113,9 @@ nav ul li{
     width:300px
 }
 
+.log_1{
+    color:red;
+}
 a{
     text-decoration: none;
     color: #555;
@@ -545,6 +568,10 @@ form a{
 
 /*-- media query for less than 600 screen size --*/
 @media only screen and (max-width: 600px){
+    .foot_img{
+        width:50%;
+    }
+
     .row{
         text-align: center;
     }
@@ -567,5 +594,21 @@ form a{
         display: none;
 
     }
+
+    .land_h1{
+      
+        margin-left:10px;
+    }  
+    
+    .fea_img{
+        margin-left: 0px;
+    }
+
+    .footer h3{
+        color: yellow;
+        margin-left: 84px;
+    }
+
+  
 
 }

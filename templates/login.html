@@ -1,11 +1,58 @@
-<form action="" method="POST">
-    {% csrf_token %}
-    <input type="text" name="username" id="" placeholder="ussername">
-    <input type="password" name="password" id="" placeholder='password'>
-    <input type="submit" value="submit">
-</form>
+{% load static%}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.min.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/signup.css' %}">
+</head>
+<body>
 
 
-{%for message in messages%}
-    <p>{{message}}</p>
-{%endfor  %}
+
+<div  class='container'>
+    <div class='row login'>
+        <div class='col-md-3'></div>
+            <div class='col-md-6'>
+                <div class='sec2_div'>
+                    <img src="{%static 'images/warlogo.png'    %}" width='150'>
+                    <form action="" method="POST">
+                        {% csrf_token %}
+                        <input class='log_sec' type="text" name="username" id="" placeholder="ussername">
+                        <br>
+                        <input class='log_sec' type="password" name="password" id="" placeholder='password'>
+                        <br>
+                        <input class='btn btn-primary sub' type="submit" value="Submit">
+                    </form>
+                    <div>  {%for message in messages%}
+                        <p>{{message}}</p>
+                         {%endfor  %}</div>
+
+                    <div class='row'>
+                        <div class='col'>
+                            <p class='btn btn-outline-primary' >Forget Password</p>
+                        </div>
+
+                        <div class='col'>
+                            <a href="{% url 'reg'   %}">  <p class='btn btn-outline-primary'>Create Account</p></a> 
+
+                        </div>
+
+                    </div>
+                    
+
+                </div>
+            </div>
+            <div class='col-md-3'></div>
+
+        </div>
+    </div>
+
+
+
+
+</body>
+</html>
+
+

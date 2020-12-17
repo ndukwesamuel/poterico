@@ -52,6 +52,7 @@ def product(request):
 
 # @allowed_users(allowed_roles=['buyer'])
 # @admin_only
+@login_required(login_url='log_page')
 def cart(request):
 
 	if request.user.is_authenticated:
@@ -69,7 +70,7 @@ def cart(request):
 	return render(request, 'cart.html', context)
 
 
-# @unauthenticated_user
+@unauthenticated_user
 def reg(request):
 	form = CreateUserForm()
 	if request.method == 'POST':
@@ -82,48 +83,31 @@ def reg(request):
 			return redirect('log_page')
 
 	context = {'form':form}
-	return render(request, 'account.html', context)
+	return render(request, 'registration.html', context)
 
+
+@unauthenticated_user
 def log_page(request):
-
 	if request.method == 'POST':
 		username = request.POST.get('username')
 		password =request.POST.get('password')
 		user = authenticate(request, username=username, password=password)
 		if user is not None:
 			login(request, user)
-			return redirect('store')
+			return redirect('home')
 		else:
 			messages.info(request, 'Username OR password is incorrect')
 
-	return render(request, 'account2.html', {})
+	return render(request, 'login.html', {})
 
 def logoutUser(request):
 	logout(request)
 	return redirect('log_page')
 
 
-
-def store(request):
-
-	if request.user.is_authenticated:
-		customer = request.user.customer
-		order, created = Order.objects.get_or_create(customer=customer, complete=False)
-		items = order.orderitem_set.all()
-		cartItems = order.get_cart_items
-	else:
-		#Create empty cart for now for non-logged in user
-		items = []
-		order = {'get_cart_total':0, 'get_cart_items':0, 'shipping':False}
-		cartItems = order['get_cart_items']
-
-	products = Product.objects.all()
-	context = {'products':products, 'cartItems':cartItems}
-	return render(request, 'store.html', context)
-
-
 # @allowed_users(allowed_roles=['buyer'])
 # @admin_only
+@login_required(login_url='log_page')
 def cart2(request):
 
 	if request.user.is_authenticated:
@@ -140,6 +124,7 @@ def cart2(request):
 	context = {'items':items, 'order':order, 'cartItems':cartItems}
 	return render(request, 'cart2.html', context)
 
+@login_required(login_url='log_page')
 def checkout(request):
 	if request.user.is_authenticated:
 		customer = request.user.customer
@@ -155,6 +140,7 @@ def checkout(request):
 	context = {'items':items, 'order':order, 'cartItems':cartItems}
 	return render(request, 'checkout.html', context)
 
+@login_required(login_url='log_page')
 def updateItem(request):
 	data = json.loads(request.body)
 	productId = data['productId']
@@ -180,6 +166,7 @@ def updateItem(request):
 
 	return JsonResponse('Item was added', safe=False)
 
+@login_required(login_url='log_page')
 def processOrder(request):
 	transaction_id = datetime.datetime.now().timestamp()
 	data = json.loads(request.body)
@@ -208,15 +195,31 @@ def processOrder(request):
 
 	return JsonResponse('Payment submitted..', safe=False)
 
-def about(request):
 
-	
-	return render(request, 'about.html',{})
 
 
 
 
 
 # def delet_page(request):
+
+# all not needed but useful code
+
+def store(request):
+
+	if request.user.is_authenticated:
+		customer = request.user.customer
+		order, created = Order.objects.get_or_create(customer=customer, complete=False)
+		items = order.orderitem_set.all()
+		cartItems = order.get_cart_items
+	else:
+		#Create empty cart for now for non-logged in user
+		items = []
+		order = {'get_cart_total':0, 'get_cart_items':0, 'shipping':False}
+		cartItems = order['get_cart_items']
+
+	products = Product.objects.all()
+	context = {'products':products, 'cartItems':cartItems}
+	return render(request, 'store.html', context)
 
 

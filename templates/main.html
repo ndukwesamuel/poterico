@@ -5,11 +5,16 @@
 	<title>Ecom</title>
 
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1" />
+
 	<!-- 
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous"> -->
 	<link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.min.css' %}">
 	<link rel="stylesheet" type="text/css" href="{% static 'css/main.css' %}">
 	<link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+
+
+
+
 	<script type="text/javascript">
 		var user = '{{request.user}}'
 
@@ -66,18 +71,18 @@
 <div class="navbar">
 	<div class="logo">
 		<a href="index.html"><img src="{%static 'images/warlogo.png'   %}" width="125px"></a>
-		<a href="{% url 'reg' %}">Register</a>
-		<a href="{% url 'log_page' %}">Login</a>
-		<a href="{% url 'logoutUser' %}">logout</a>
+
 	</div>
 	<nav>
 		<ul id="MenuItems">
-			<li>{{request.user}}</li>
+			
+		
+
 			<li><a href="{% url 'home' %}">Home</a></li>
 			<li><a href="{% url 'product' %}">Products</a></li>
-			<li><a href="">About</a></li>
-			<li><a href="">Contact</a></li>
-			<li><a href="{% url 'reg'%}">Account</a></li>
+			<li><a href="{% url 'reg' %}">Register</a></li>
+			<li><a href="{% url 'log_page' %}">Login</a></li>
+			<li><a href="{% url 'logoutUser' %}">logout</a></li>
 		</ul>
 	</nav> <a href="{% url 'cart' %}"><img src="{% static 'images/cart.png '%}" width="30px" height="30px"></a>
 	<p id="cart-total">{{cartItems}}</p>

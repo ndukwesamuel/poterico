@@ -18,7 +18,6 @@ urlpatterns = [
 	path('log_page/', views.log_page, name="log_page"),
 	path('logoutUser/', views.logoutUser, name="logoutUser"),
 	path('product/', views.product, name="product"),
-	path('about/', views.about, name="about")
 
 
 
