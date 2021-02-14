@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'store.apps.StoreConfig',
+    'storages',
 ]
 
 MIDDLEWARE = [
@@ -131,3 +132,14 @@ STATICFILES_DIRS = [
 MEDIA_URL = '/images/'
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'static/images')
+
+
+AWS_ACCESS_KEY_ID = 'AKIAUBQQM6OMSVOKETRJ'
+AWS_SECRET_ACCESS_KEY = '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'
+AWS_STORAGE_BUCKET_NAME = 'potorico'
+
+AWS_S3_FILE_OVERWRITE = False
+AWS_DEFAULT_ACL = None
+DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+STATICFILES_STORAGE = 'storages.backends.s3boto3.S3StaticStorage'
+
