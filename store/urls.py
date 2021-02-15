@@ -14,9 +14,9 @@ urlpatterns = [
 	path('update_item/', views.updateItem, name="update_item"),
 	path('process_order/', views.processOrder, name="process_order"),
 
-	path('reg/', views.reg, name="reg"),
-	path('log_page/', views.log_page, name="log_page"),
-	path('logoutUser/', views.logoutUser, name="logoutUser"),
+	# path('reg/', views.reg, name="reg"),
+	# path('log_page/', views.log_page, name="log_page"),
+	# path('logoutUser/', views.logoutUser, name="logoutUser"),
 	path('product/', views.product, name="product"),
 
 

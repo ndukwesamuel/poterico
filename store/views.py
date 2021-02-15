@@ -2,7 +2,6 @@ from django.shortcuts import render,redirect
 from django.http import JsonResponse
 import json
 import datetime
-
 from django.contrib.auth.forms import  UserCreationForm
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
@@ -10,7 +9,6 @@ from django.db.models.signals import post_save
 from django.contrib.auth.models import User
 from django.contrib.auth.models import Group
 from django.contrib import  messages
-
 from .models import * 
 from .forms import CreateUserForm
 from .decorators import allowed_users,admin_only,unauthenticated_user
@@ -24,6 +22,8 @@ def home(request):
 		items = order.orderitem_set.all()
 		cartItems = order.get_cart_items
 	else:
+		pass
+
 		#Create empty cart for now for non-logged in user
 		items = []
 		order = {'get_cart_total':0, 'get_cart_items':0, 'shipping':False}
@@ -41,10 +41,11 @@ def product(request):
 		items = order.orderitem_set.all()
 		cartItems = order.get_cart_items
 	else:
-		#Create empty cart for now for non-logged in user
-		items = []
-		order = {'get_cart_total':0, 'get_cart_items':0, 'shipping':False}
-		cartItems = order['get_cart_items']
+		pass
+		# #Create empty cart for now for non-logged in user
+		# items = []
+		# order = {'get_cart_total':0, 'get_cart_items':0, 'shipping':False}
+		# cartItems = order['get_cart_items']
 
 	products = Product.objects.all()
 	context = {'products':products, 'cartItems':cartItems}
@@ -61,48 +62,15 @@ def cart(request):
 		items = order.orderitem_set.all()
 		cartItems = order.get_cart_items
 	else:
-		#Create empty cart for now for non-logged in user
-		items = []
-		order = {'get_cart_total':0, 'get_cart_items':0, 'shipping':False}
-		cartItems = order['get_cart_items']
+		pass
+		# #Create empty cart for now for non-logged in user
+		# items = []
+		# order = {'get_cart_total':0, 'get_cart_items':0, 'shipping':False}
+		# cartItems = order['get_cart_items']
 
 	context = {'items':items, 'order':order, 'cartItems':cartItems}
 	return render(request, 'cart.html', context)
 
-
-@unauthenticated_user
-def reg(request):
-	form = CreateUserForm()
-	if request.method == 'POST':
-		form= CreateUserForm(request.POST)
-		if form.is_valid():
-			form.save()
-			print(form)
-			username = form.cleaned_data.get('username')
-			messages.success(request, 'creaed'+ username)
-			return redirect('log_page')
-
-	context = {'form':form}
-	return render(request, 'registration.html', context)
-
-
-@unauthenticated_user
-def log_page(request):
-	if request.method == 'POST':
-		username = request.POST.get('username')
-		password =request.POST.get('password')
-		user = authenticate(request, username=username, password=password)
-		if user is not None:
-			login(request, user)
-			return redirect('home')
-		else:
-			messages.info(request, 'Username OR password is incorrect')
-
-	return render(request, 'login.html', {})
-
-def logoutUser(request):
-	logout(request)
-	return redirect('log_page')
 
 
 # @allowed_users(allowed_roles=['buyer'])
@@ -116,10 +84,11 @@ def cart2(request):
 		items = order.orderitem_set.all()
 		cartItems = order.get_cart_items
 	else:
+		pass
 		#Create empty cart for now for non-logged in user
-		items = []
-		order = {'get_cart_total':0, 'get_cart_items':0, 'shipping':False}
-		cartItems = order['get_cart_items']
+		# items = []
+		# order = {'get_cart_total':0, 'get_cart_items':0, 'shipping':False}
+		# cartItems = order['get_cart_items']
 
 	context = {'items':items, 'order':order, 'cartItems':cartItems}
 	return render(request, 'cart2.html', context)
@@ -132,10 +101,11 @@ def checkout(request):
 		items = order.orderitem_set.all()
 		cartItems = order.get_cart_items
 	else:
-		#Create empty cart for now for non-logged in user
-		items = []
-		order = {'get_cart_total':0, 'get_cart_items':0, 'shipping':False}
-		cartItems = order['get_cart_items']
+		pass
+		# #Create empty cart for now for non-logged in user
+		# items = []
+		# order = {'get_cart_total':0, 'get_cart_items':0, 'shipping':False}
+		# cartItems = order['get_cart_items']
 
 	context = {'items':items, 'order':order, 'cartItems':cartItems}
 	return render(request, 'checkout.html', context)
@@ -213,10 +183,11 @@ def store(request):
 		items = order.orderitem_set.all()
 		cartItems = order.get_cart_items
 	else:
-		#Create empty cart for now for non-logged in user
-		items = []
-		order = {'get_cart_total':0, 'get_cart_items':0, 'shipping':False}
-		cartItems = order['get_cart_items']
+		pass
+	# 	#Create empty cart for now for non-logged in user
+	# 	items = []
+	# 	order = {'get_cart_total':0, 'get_cart_items':0, 'shipping':False}
+	# 	cartItems = order['get_cart_items']
 
 	products = Product.objects.all()
 	context = {'products':products, 'cartItems':cartItems}

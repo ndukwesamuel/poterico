@@ -39,35 +39,7 @@
 
 </head>
 <body>
-<!-- 
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-	  <a class="navbar-brand" href="{% url 'store' %}">Ecom</a>
-	  <a href="{%url 'logoutUser'	%}">logoutUser</a>
-	  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-	    <span class="navbar-toggler-icon"></span>
-	  </button>
 
-	  <div class="collapse navbar-collapse" id="navbarSupportedContent">
-	    <ul class="navbar-nav mr-auto">
-	      <li class="nav-item active">
-			<a class="nav-link" href="{% url 'store' %}">Store <span class="sr-only">(current)</span></a>
-			<a href="#">{{request.user}}</a>
-	      </li>
-	 
-	    </ul>
-	    <div class="form-inline my-2 my-lg-0">
-	     	<a href="#"class="btn btn-warning">Login</a>
-	     	
-	     	<a href="{% url 'cart' %}">
-	    		<img  id="cart-icon" src="{% static 'images/cart.png' %}">
-	    	</a>
-	    	<p id="cart-total">{{cartItems}}+1</p>
-
-	    </div>
-	  </div>
-	</nav> -->
-
-<!-- the next  -->
 <div class="navbar">
 	<div class="logo">
 		<a href="index.html"><img src="{%static 'images/warlogo.png'   %}" width="125px"></a>
@@ -80,11 +52,15 @@
 
 			<li><a href="{% url 'home' %}">Home</a></li>
 			<li><a href="{% url 'product' %}">Products</a></li>
-			<li><a href="{% url 'reg' %}">Register</a></li>
-			<li><a href="{% url 'log_page' %}">Login</a></li>
-			<li><a href="{% url 'logoutUser' %}">logout</a></li>
+			<li><a href="{% url 'account_signup' %}">Register</a></li>
+			<li><a href="{% url  'account_login' %}">Login</a></li>
+			<li><a href="{% url  'account_logout' %}">logout</a></li>
+			<li><a href="">{{request.user}}</a></li>
+
 		</ul>
-	</nav> <a href="{% url 'cart' %}"><img src="{% static 'images/images/cart.png '%}" width="30px" height="30px"></a>
+	</nav>
+
+	 <a href="{% url 'cart' %}"><img src="{% static 'images/images/cart.png' %}" width="30px" height="30px"></a>
 	<p id="cart-total">{{cartItems}}</p>
 	<img src="{%static 'images/images/menu.png'    %}" class="menu-icon" onclick="menutoggle()">
 

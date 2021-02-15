@@ -39,9 +39,34 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.sites',
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
     'store.apps.StoreConfig',
     'storages',
 ]
+
+
+SITE_ID = 1
+
+LOGIN_REDIRECT_URL = '/'
+
+ACCOUNT_AUTHENTICATION_METHOD = 'username_email'
+ACCOUNT_EMAIL_REQUIRED = True
+ACCOUNT_EMAIL_UNIQUE =True
+
+# if it on the live server 
+# ACCOUNT_EMAIL_VERIFICATION = 'mandatory'
+
+if DEBUG:
+    EMAIL_BACKEND ='django.core.mail.backends.dummy.EmailBackend'
+
+else:
+    EMAIL_BACKEND ='django.core.mail.backends.dummy.EmailBackend'
+    # EMAIL_BACKEND ='django.core.mail.backends.smtp.EmailBackend'
+
+
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -71,6 +96,18 @@ TEMPLATES = [
         },
     },
 ]
+
+
+AUTHENTICATION_BACKENDS = [
+   
+    # Needed to login by username in Django admin, regardless of `allauth`
+    'django.contrib.auth.backends.ModelBackend',
+
+    # `allauth` specific authentication methods, such as login by e-mail
+    'allauth.account.auth_backends.AuthenticationBackend',
+ 
+]
+
 
 WSGI_APPLICATION = 'poterico.wsgi.application'
 
@@ -137,7 +174,6 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'static/images')
 AWS_ACCESS_KEY_ID = 'AKIAUBQQM6OMSVOKETRJ'
 AWS_SECRET_ACCESS_KEY = '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'
 AWS_STORAGE_BUCKET_NAME = 'potorico'
-
 AWS_S3_FILE_OVERWRITE = False
 AWS_DEFAULT_ACL = None
 DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
