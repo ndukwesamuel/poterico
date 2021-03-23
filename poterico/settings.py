@@ -24,7 +24,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'jwq84u&7pvhd!!_($sw@4^sa(%^boto(mauvo%!d2=9e5+mzg_'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG =False
+DEBUG =True
 
 ALLOWED_HOSTS = ['standardrice.herokuapp.com', '127.0.0.1']
 
@@ -177,5 +177,5 @@ AWS_STORAGE_BUCKET_NAME = 'potorico'
 AWS_S3_FILE_OVERWRITE = False
 AWS_DEFAULT_ACL = None
 DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
-STATICFILES_STORAGE = 'storages.backends.s3boto3.S3StaticStorage'
+# STATICFILES_STORAGE = 'storages.backends.s3boto3.S3StaticStorage'
 

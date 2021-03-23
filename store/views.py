@@ -33,7 +33,7 @@ def home(request):
 	context = {'products':products, 'cartItems':cartItems}
 	return render(request, 'index.html',context)
 
-@login_required(login_url='log_page')
+@login_required(login_url='account_login')
 def product(request):
 	if request.user.is_authenticated:
 		customer = request.user.customer
@@ -53,7 +53,7 @@ def product(request):
 
 # @allowed_users(allowed_roles=['buyer'])
 # @admin_only
-@login_required(login_url='log_page')
+@login_required(login_url='account_login')
 def cart(request):
 
 	if request.user.is_authenticated:
@@ -75,7 +75,7 @@ def cart(request):
 
 # @allowed_users(allowed_roles=['buyer'])
 # @admin_only
-@login_required(login_url='log_page')
+@login_required(login_url='account_login')
 def cart2(request):
 
 	if request.user.is_authenticated:
@@ -93,9 +93,9 @@ def cart2(request):
 	context = {'items':items, 'order':order, 'cartItems':cartItems}
 	return render(request, 'cart2.html', context)
 
-@login_required(login_url='log_page')
+@login_required(login_url='account_login')
 def checkout(request):
-	if request.user.is_authenticated:
+	if request.user.is_authenticated:	
 		customer = request.user.customer
 		order, created = Order.objects.get_or_create(customer=customer, complete=False)
 		items = order.orderitem_set.all()
@@ -110,7 +110,7 @@ def checkout(request):
 	context = {'items':items, 'order':order, 'cartItems':cartItems}
 	return render(request, 'checkout.html', context)
 
-@login_required(login_url='log_page')
+@login_required(login_url='account_login')
 def updateItem(request):
 	data = json.loads(request.body)
 	productId = data['productId']
@@ -136,7 +136,7 @@ def updateItem(request):
 
 	return JsonResponse('Item was added', safe=False)
 
-@login_required(login_url='log_page')
+@login_required(login_url='account_login')
 def processOrder(request):
 	transaction_id = datetime.datetime.now().timestamp()
 	data = json.loads(request.body)
